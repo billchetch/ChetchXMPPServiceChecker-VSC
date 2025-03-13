@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChetchXMPPServiceChecker", "ChetchXMPPServiceChecker\ChetchXMPPServiceChecker.csproj", "{8BB9E755-CC36-4941-9920-B9C10A70531A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChetchXMPP", "..\..\Libraries\ChetchXMPP\ChetchXMPP\ChetchXMPP.csproj", "{880959D0-FAC6-4B16-89E2-87EBC70ED623}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "..\..\Libraries\Utilities\Utilities\Utilities.csproj", "{5810938E-E84B-415C-9E6C-6C557584ED0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messaging", "..\..\Libraries\Messaging\Messaging\Messaging.csproj", "{A96CD2D4-FAE9-49F5-933A-98C02DBF96E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BB9E755-CC36-4941-9920-B9C10A70531A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BB9E755-CC36-4941-9920-B9C10A70531A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BB9E755-CC36-4941-9920-B9C10A70531A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BB9E755-CC36-4941-9920-B9C10A70531A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{880959D0-FAC6-4B16-89E2-87EBC70ED623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{880959D0-FAC6-4B16-89E2-87EBC70ED623}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{880959D0-FAC6-4B16-89E2-87EBC70ED623}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{880959D0-FAC6-4B16-89E2-87EBC70ED623}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5810938E-E84B-415C-9E6C-6C557584ED0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5810938E-E84B-415C-9E6C-6C557584ED0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5810938E-E84B-415C-9E6C-6C557584ED0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5810938E-E84B-415C-9E6C-6C557584ED0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A96CD2D4-FAE9-49F5-933A-98C02DBF96E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A96CD2D4-FAE9-49F5-933A-98C02DBF96E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A96CD2D4-FAE9-49F5-933A-98C02DBF96E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A96CD2D4-FAE9-49F5-933A-98C02DBF96E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
