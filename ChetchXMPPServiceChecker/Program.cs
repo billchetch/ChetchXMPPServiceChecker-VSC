@@ -22,9 +22,12 @@ class Program
 
         public bool Subscribed { get; set; } = false;
         public bool CommandListReady { get; set; } = false;
+
+        public String PreviousCommand { get; set; } = String.Empty;
+
+        public bool IsConnected => cnn.CurrentState == XmppDotNet.SessionState.Binded;
+
         ChetchXMPPConnection cnn;
-
-
 
         public Task Connect(String un, String pw)
         {
@@ -48,9 +51,10 @@ class Program
                             Console.WriteLine("Actions:");
                             ConsoleHelper.LF();
                             Console.WriteLine("1: Clear and list actions and commands again");
-                            Console.WriteLine("2: Request Service Status");
-                            Console.WriteLine("3: Subscribe");
-                            Console.WriteLine("4: Exit");
+                            Console.WriteLine("2: Repeat prevous command");
+                            Console.WriteLine("3: Request Service Status");
+                            Console.WriteLine("4: Subscribe");
+                            Console.WriteLine("5: Exit");
                             ConsoleHelper.LF();
 
                             Console.WriteLine("Commands:");
@@ -90,6 +94,7 @@ class Program
                         break;
 
                     default:
+                        //DisplayMessage(msg);
                         break;
                 }
             };
@@ -154,6 +159,8 @@ class Program
             var cmd = ChetchXMPPMessaging.CreateCommandMessage(commandAndArgs);
             cmd.Target = Target;
             await cnn.SendMessageAsync(cmd);
+
+            PreviousCommand = commandAndArgs;
         }
 
         public void DisplayMessage(Message msg)
@@ -195,10 +202,21 @@ class Program
     static async Task Main(string[] args)
     {
         Console.Clear();
-        ConsoleHelper.PK("Press a key to connect {0}", USERNAME);
         
         var client = new ChetchXMPPClient();
-        await client.Connect(USERNAME, PASSWORD);
+        bool connectSuccess = false;
+        do{
+            try
+            {
+                await client.Connect(USERNAME, PASSWORD);
+                connectSuccess = true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Thread.Sleep(1000);
+            }
+        } while (!connectSuccess);
 
         Console.WriteLine("Please select a target for this session...");
         for(int i = 1; i <= Targets.Length; i++)
@@ -234,13 +252,11 @@ class Program
         Console.WriteLine("Requesting command list...");
         await client.GetCommandList();
         
-        
         bool exitRequested = false;
         do
         {
             var line = Console.ReadLine();
             ConsoleHelper.CLRL(client.CommandCursorStart.Top, client.CommandCursorStart.Left);
-            //client.AddToHistory(line);
             switch(line)
             {
                 case "1":
@@ -248,14 +264,22 @@ class Program
                     break;
 
                 case "2":
-                    await client.RequestStatus();
+                    var cmd = client.PreviousCommand;
+                    if(!String.IsNullOrEmpty(cmd))
+                    {
+                        client.SendCommand(cmd);
+                    }
                     break;
 
                 case "3":
-                    await client.Subscribe();
+                    await client.RequestStatus();
                     break;
 
                 case "4":
+                    await client.Subscribe();
+                    break;
+
+                case "5":
                     exitRequested = true;
                     break;
 
