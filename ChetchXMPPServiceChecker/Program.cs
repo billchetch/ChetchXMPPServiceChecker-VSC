@@ -32,6 +32,9 @@ class Program
         public Task Connect(String un, String pw)
         {
             cnn = new ChetchXMPPConnection(un, pw);
+            cnn.SessionStateChanged += (sender, sessionState) => {
+                Console.WriteLine("Session state changed to {0}", sessionState);
+            };
             cnn.MessageReceived += (sender, eargs)=>{
                 var msg = eargs.Message;
                 if (msg == null) return;
@@ -205,19 +208,17 @@ class Program
         
         var client = new ChetchXMPPClient();
         bool connectSuccess = false;
-        do{
-            try
-            {
-                await client.Connect(USERNAME, PASSWORD);
-                connectSuccess = true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                Thread.Sleep(1000);
-            }
-        } while (!connectSuccess);
-
+        try
+        {
+            await client.Connect(USERNAME, PASSWORD);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            ConsoleHelper.PK("Press a key to end...");
+            return;
+        }
+        
         Console.WriteLine("Please select a target for this session...");
         for(int i = 1; i <= Targets.Length; i++)
         {
