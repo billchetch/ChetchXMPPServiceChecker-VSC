@@ -198,8 +198,9 @@ class Program
     const String PASSWORD = "8ulan8aru";
     
     readonly static String[] Targets = [
-                                "bbalarms.service@openfire.bb.lan", 
-                                "gps.service@openfire.bb.lan"
+                                "bbalarms.service@openfire.bb.lan",
+                                "gps.service@openfire.bb.lan",
+                                "admtest.service@@openfire.bb.lan"
                                 ];
 
     static async Task Main(string[] args)
