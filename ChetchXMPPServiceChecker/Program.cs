@@ -200,7 +200,7 @@ class Program
     readonly static String[] Targets = [
                                 "bbalarms.service@openfire.bb.lan",
                                 "gps.service@openfire.bb.lan",
-                                "admtest.service@@openfire.bb.lan"
+                                "arduinotest.service@openfire.bb.lan"
                                 ];
 
     static async Task Main(string[] args)
