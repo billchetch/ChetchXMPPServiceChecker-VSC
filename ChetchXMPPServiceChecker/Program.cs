@@ -194,13 +194,19 @@ class Program
         }
     }
 
-    const String USERNAME = "service.checker@openfire.bb.lan";
+    const String DOMAIN = "openfire.bb.lan";
+    //const String DOMAIN = "network.bulan-baru.com";
+    //const String DOMAIN = "47.129.130.200";
+    //const String DOMAIN = "192.168.2.88";
+
+
+    const String USERNAME = "service.checker@" + DOMAIN;
     const String PASSWORD = "8ulan8aru";
     
     readonly static String[] Targets = [
-                                "bbalarms.service@openfire.bb.lan",
-                                "gps.service@openfire.bb.lan",
-                                "arduinotest.service@openfire.bb.lan"
+                                "bbalarms.service@o" + DOMAIN,
+                                "gps.service@" + DOMAIN,
+                                "arduinotest.service@" + DOMAIN
                                 ];
 
     static async Task Main(string[] args)
